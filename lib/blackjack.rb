@@ -1,44 +1,82 @@
+require 'pry'
 def welcome
-  # code #welcome here
-end
+ puts "Welcome to the Blackjack Table"
+ end
 
 def deal_card
-  # code #deal_card here
+  p rand(1..11)
 end
 
-def display_card_total
-  # code #display_card_total here
+def display_card_total(total)
+  puts  "Your cards add up to #{total}"
+  
 end
 
 def prompt_user
-  # code #prompt_user here
+  puts "Type 'h' to hit or 's' to stay"
 end
 
 def get_user_input
-  # code #get_user_input here
+ gets.chomp 
 end
 
-def end_game
-  # code #end_game here
+def end_game(total)
+  puts "Sorry, you hit #{total}. Thanks for playing!"
 end
 
 def initial_round
-  # code #initial_round here
+  total = 0
+  total += deal_card
+  total += deal_card
+  display_card_total(total)
+ total
 end
 
-def hit?
-  # code hit? here
-end
+def hit?(cards_total)
+  prompt_user
+  user_input = get_user_input
+ 
+  until user_input =="h" || user_input == "s"
+  # binding.pry
+  invalid_command
+  prompt_user
+  user_input = get_user_input
+ end
+ 
+  if user_input == "h"
+     cards_total += deal_card
+     elsif
+     user_input == "s"
+     cards_total
+  end
+  cards_total
+  end
 
 def invalid_command
-  # code invalid_command here
+  puts "Please enter a valid command"
+  
 end
 
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
+# it "calls on the #welcome method, 
+#   then on the #initial_round method, 
+#   then calls #hit? and #display_card_total methods
+#   -until- the card sum is greater than 21,
+#   then calls on the #end_game method" do
+
+
+
 
 def runner
-  # code runner here
+ welcome
+ total = initial_round
+  until total > 21
+  total = hit?(total)
+  display_card_total(total)
+
+end
+end_game(total)
 end
     

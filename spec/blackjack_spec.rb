@@ -1,3 +1,5 @@
+require 'pry'
+
 describe "#welcome" do
   it "prints a welcome message to screen" do
     expect($stdout).to receive(:puts).with("Welcome to the Blackjack Table")
@@ -98,6 +100,7 @@ describe "#hit?" do
     expect(self).to receive(:get_user_input).and_return("h")
     expect(self).to receive(:deal_card).and_return(7)
     expect(hit?(7)).to eq(14)
+  
   end
 
   it "displays the invalid command message and prompts the user again if a user inputs something other than 'h' or 's'" do
